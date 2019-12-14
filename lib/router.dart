@@ -7,15 +7,15 @@ class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case RoutePaths.Login:
-        return MaterialPageRoute(builder: (_) => LoginPage());
+        return MaterialPageRoute(builder: (context) => LoginPage());
       case RoutePaths.HomePage:
-        return MaterialPageRoute(builder: (_) => HomePage());
+        return MaterialPageRoute(builder: (context) => HomePage());
       case RoutePaths.Auth:
-        return MaterialPageRoute(builder: (_) => Authentication());
+        return MaterialPageRoute(builder: (context) => Authentication());
 
       default:
         return MaterialPageRoute(
-            builder: (_) => Scaffold(
+            builder: (context) => Scaffold(
                   body: Center(
                     child: Text('No route defined for ${settings.name}'),
                   ),

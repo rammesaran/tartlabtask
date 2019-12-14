@@ -1,7 +1,7 @@
 class FormValidate {
   String validateUsername(String values) {
     if (values.isEmpty) {
-      return 'username is required';
+      return 'EmailID is required';
     } else {
       return null;
     }
