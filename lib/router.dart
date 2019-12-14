@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:logintask/authentication.dart';
 import 'package:logintask/view/pages/home_page.dart';
 import 'package:logintask/view/pages/login_page.dart';
 
@@ -9,8 +10,8 @@ class Router {
         return MaterialPageRoute(builder: (_) => LoginPage());
       case RoutePaths.HomePage:
         return MaterialPageRoute(builder: (_) => HomePage());
-      case RoutePaths.Application:
-      //   return MaterialPageRoute(builder: (_) => ApplicationPage());
+      case RoutePaths.Auth:
+        return MaterialPageRoute(builder: (_) => Authentication());
 
       default:
         return MaterialPageRoute(
@@ -24,7 +25,7 @@ class Router {
 }
 
 class RoutePaths {
-  static const String Application = '/';
+  static const String Auth = '/';
   static const String Login = 'login';
   static const String HomePage = 'homePage';
 }

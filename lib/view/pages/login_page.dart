@@ -41,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
                             decoration: InputDecoration(
                               hintText: "Username",
                             ),
-                            keyboardType: TextInputType.number,
+                            keyboardType: TextInputType.text,
                             validator: FormValidate().validateUsername,
                           ),
                           TextFormField(

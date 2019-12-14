@@ -5,11 +5,12 @@ import 'package:logintask/services/login_service.dart';
 import 'package:logintask/utils/shared_preferences_util.dart';
 
 class LoginPresenter extends ChangeNotifier {
+  String error;
+
   LoginService _loginService;
 
   LoginPresenter({LoginService loginService}) : _loginService = loginService;
 
-  String error;
   bool isLoginSuccess;
   LoginRequestModel request;
   LoginResponseModel response;
