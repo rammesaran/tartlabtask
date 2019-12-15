@@ -12,8 +12,14 @@ class LoginPresenter extends ChangeNotifier {
   LoginPresenter({LoginService loginService}) : _loginService = loginService;
 
   bool isLoginSuccess;
+  bool passwordVisible = true;
   LoginRequestModel request;
   LoginResponseModel response;
+
+  void setPasswordVisible() {
+    passwordVisible = !passwordVisible;
+    notifyListeners();
+  }
 
   Future<LoginResponseModel> login(LoginRequestModel request) async {
     try {

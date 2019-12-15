@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:logintask/common/router.dart';
+import 'package:logintask/common/validation.dart';
 import 'package:logintask/models/login_request_model.dart';
 import 'package:logintask/presenter/login_presenter.dart';
-import 'package:logintask/router.dart';
-import 'package:logintask/validation.dart';
 import 'package:provider/provider.dart';
 import '../../base_widget.dart';
 
@@ -15,7 +15,6 @@ class _LoginPageState extends State<LoginPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final LoginRequestModel _loginRequestModel = LoginRequestModel();
-  bool passwordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +23,7 @@ class _LoginPageState extends State<LoginPage> {
         builder: (context, model, child) => Scaffold(
               key: _scaffoldKey,
               appBar: AppBar(
+                backgroundColor: Color(0xff003c6c),
                 title: Text('Sign In'),
               ),
               body: Center(
@@ -40,9 +40,9 @@ class _LoginPageState extends State<LoginPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               SizedBox(
-                                height: 100.0,
+                                height: 150.0,
                                 child: Image.asset(
-                                  "asset/image1.png",
+                                  "asset/splash.png",
                                   fit: BoxFit.contain,
                                 ),
                               ),
@@ -73,15 +73,11 @@ class _LoginPageState extends State<LoginPage> {
                                 decoration: InputDecoration(
                                   suffixIcon: IconButton(
                                       icon: Icon(
-                                        passwordVisible
+                                        model.passwordVisible
                                             ? Icons.visibility
                                             : Icons.visibility_off,
                                       ),
-                                      onPressed: () {
-                                        setState(() {
-                                          passwordVisible = !passwordVisible;
-                                        });
-                                      }),
+                                      onPressed: model.setPasswordVisible),
                                   prefixIcon: Icon(Icons.lock),
                                   contentPadding: EdgeInsets.fromLTRB(
                                       20.0, 15.0, 20.0, 15.0),
@@ -93,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                                 keyboardType: TextInputType.text,
                                 onSaved: (_value) =>
                                     _loginRequestModel.password = _value,
-                                obscureText: passwordVisible,
+                                obscureText: model.passwordVisible,
                                 validator: FormValidate().validatePassword,
                               ),
                               SizedBox(
@@ -102,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                               Material(
                                 elevation: 5.0,
                                 borderRadius: BorderRadius.circular(30.0),
-                                color: Colors.blue,
+                                color: Color(0xffdf4c4f),
                                 child: MaterialButton(
                                   minWidth: MediaQuery.of(context).size.width,
                                   padding: EdgeInsets.fromLTRB(
@@ -117,11 +113,13 @@ class _LoginPageState extends State<LoginPage> {
                                       await model.login(model.request);
                                       if (model.isLoginSuccess) {
                                         Navigator.pushNamed(
-                                            context, RoutePaths.HomePage);
+                                          context,
+                                          RoutePaths.HomePage,
+                                        );
                                       } else {
-                                        SnackBar snackBar = new SnackBar(
-                                            content: new Text(
-                                                model.error.toString()));
+                                        SnackBar snackBar = SnackBar(
+                                            content:
+                                                Text(model.error.toString()));
                                         _scaffoldKey.currentState
                                             .showSnackBar(snackBar);
                                       }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:logintask/constants.dart';
+import 'package:logintask/common/constants.dart';
+import 'package:logintask/common/router.dart';
 import 'package:logintask/provider_setup.dart';
-import 'package:logintask/router.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -16,11 +16,13 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
         providers: providers,
         child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          darkTheme: ThemeData.dark(),
           title: 'Flutter Demo',
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          initialRoute: RoutePaths.Auth,
+          initialRoute: RoutePaths.SplashScreen,
           onGenerateRoute: Router.generateRoute,
         ));
   }

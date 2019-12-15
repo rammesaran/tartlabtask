@@ -1,5 +1,6 @@
 import 'dart:io';
-import 'package:logintask/constants.dart';
+
+import 'package:logintask/common/constants.dart';
 import 'package:logintask/models/login_request_model.dart';
 import 'package:logintask/models/login_response_model.dart';
 import 'package:http/http.dart' as http;

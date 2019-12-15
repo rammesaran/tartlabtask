@@ -1,11 +1,10 @@
 import 'dart:io';
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
+import 'package:logintask/common/constants.dart';
 
 import 'package:logintask/models/get_app_list_model.dart';
 import 'package:logintask/utils/shared_preferences_util.dart';
-
-import '../constants.dart';
 
 class HomeService {
   Future<GetAppListModel> getAppList() async {

@@ -15,7 +15,6 @@ class HomePresenter extends ChangeNotifier {
   Future getAppList() async {
     isLoading = true;
     notifyListeners();
-
     try {
       apps = await homeService.getAppList();
     } catch (e) {
